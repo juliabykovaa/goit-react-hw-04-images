@@ -1,16 +1,20 @@
-export const App = () => {
+import React, { useState } from 'react';
+import Searchbar from './Searchbar/Searchbar';
+import ImageGallery from '../components/ImageGallery/ImageGallery';
+
+function App() {
+  const [queryRequest, setQueryRequest] = useState('');
+
+  const handleFormSubmit = queryValue => {
+    setQueryRequest(queryValue);
+  };
+
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <>
+      <Searchbar onSubmit={handleFormSubmit} />
+      <ImageGallery request={queryRequest} />
+    </>
   );
-};
+}
+
+export default App;
